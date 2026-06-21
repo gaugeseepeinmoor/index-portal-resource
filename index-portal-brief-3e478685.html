@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息索引 | 专题特辑 · 资料梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fce6c9 0%, #f8d5b0 35%, #f3c69a 70%, #edb887 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #3e2c1c;
+        }
+
+        .wrapper {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 248, 238, 0.7);
+            backdrop-filter: blur(3px);
+            border-radius: 48px 48px 32px 32px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px -10px rgba(160, 100, 50, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .hero-band {
+            background: linear-gradient(105deg, #d7a97c 0%, #c89160 100%);
+            border-radius: 28px 28px 40px 40px;
+            padding: 2rem 1.8rem 1.8rem;
+            margin-bottom: 2.2rem;
+            color: #fff2e3;
+            text-shadow: 0 1px 2px rgba(70, 40, 10, 0.2);
+            box-shadow: inset 0 -2px 6px rgba(0,0,0,0.04), 0 8px 18px rgba(110, 65, 30, 0.15);
+        }
+
+        .hero-band h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hero-band h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.75;
+            letter-spacing: 0.5px;
+            background: rgba(255,230,200,0.2);
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            margin-left: 0.3rem;
+        }
+
+        .hero-band .sub {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 0.6rem;
+            border-left: 3px solid rgba(255,215,170,0.7);
+            padding-left: 1rem;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: #f0e1cf;
+            color: #5d3d23;
+            border-radius: 50px;
+            padding: 0.2rem 1.2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.6px;
+            margin-top: 0.8rem;
+            text-shadow: none;
+            font-weight: 500;
+        }
+
+        /* 卡片容器 */
+        .card-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .card-item {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 6px 16px rgba(130, 80, 40, 0.08), 0 2px 6px rgba(0,0,0,0.02);
+            transition: 0.2s;
+            border: 1px solid rgba(235, 200, 165, 0.3);
+        }
+
+        .card-item:hover {
+            box-shadow: 0 10px 28px -6px rgba(140, 80, 30, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card-item h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #5b3a20;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-item h3 span {
+            background: #efdac5;
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            border-radius: 20px;
+            margin-right: 0.3rem;
+        }
+
+        .card-item p {
+            margin-bottom: 0.8rem;
+            color: #4f3821;
+        }
+
+        .card-item .inset-note {
+            background: #f9f0e4;
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            border-left: 4px solid #cba074;
+        }
+
+        .link-embed {
+            color: #9d6a3d;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.1rem 0.3rem;
+            border-radius: 12px;
+            transition: all 0.15s;
+            background: transparent;
+            border-bottom: 1.5px dashed #b58152;
+        }
+
+        .link-embed:hover {
+            background: #e7d2bb;
+            border-bottom-style: solid;
+            color: #4d2f18;
+        }
+
+        .faq-mini {
+            background: #f6ebe0;
+            border-radius: 28px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .faq-mini h4 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #5d3a1f;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.4rem;
+            border-radius: 16px;
+            padding: 0.4rem 0.6rem;
+            transition: 0.1s;
+        }
+
+        .faq-mini details[open] {
+            background: rgba(255, 240, 220, 0.6);
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #6a4a2c;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini .faq-answer {
+            padding: 0.5rem 0.8rem 0.2rem;
+            color: #4b3621;
+        }
+
+        .closing-remark {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e1ccb6;
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            color: #5d4530;
+        }
+
+        .closing-remark .soft-highlight {
+            background: #f2dfcb;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.2rem 0.3rem;
+        }
+
+        .footer-soft {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #7c6247;
+            text-align: center;
+            opacity: 0.7;
+            border-top: 1px solid #dcc5ae;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .wrapper {
+                padding: 1.5rem 1rem;
+            }
+            .hero-band h1 {
+                font-size: 1.6rem;
+            }
+            .card-item {
+                padding: 1.2rem 1rem;
+            }
+            .faq-mini {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- 首页横幅 / hero -->
+    <div class="hero-band">
+        <h1>
+            📇 资料索引 · 专题聚焦
+            <small>信息梳理</small>
+        </h1>
+        <div class="sub">从分散到结构 —— 围绕一个核心词的内容归档与背景说明</div>
+        <div class="tagline">素材梳理 · 参考框架</div>
+    </div>
+
+    <!-- 背景说明卡片 -->
+    <div class="card-item" style="margin-bottom: 0.2rem;">
+        <h3><span></span> 关于这个专题</h3>
+        <p>在信息过载的日常里，有意识地整理某一领域的基础脉络，能帮助后续的浏览、比对与参考。本辑围绕「mk体育」这一线索，尝试将零散素材依主题归类，形成一份轻量的资料笔记。内容主要来自公开信息摘录与结构重排，不涉及深度分析，仅作为索引意义上的起点。</p>
+        <div class="inset-note">
+            💡 资料边界：聚焦功能模块、常见场景与关联结构，不包含实时数据或个性化推荐。
+        </div>
+    </div>
+
+    <!-- 三段自然介绍 (杂志式) -->
+    <div class="card-section">
+        <div class="card-item">
+            <h3><span></span> ① 模块与布局</h3>
+            <p>从界面分区来看，通常包含内容导航、信息面板、辅助工具条以及动态更新区。不同模块承担差异化的角色：有的负责快速定位，有的用于展示概览，另有专门区域存放操作入口。以 <a href="https://index-portal-mksport.com" class="link-embed">mk体育</a> 为观察对象，其结构遵循了较为常见的门户式布局，强调信息层级与可读性。</p>
+            <p>在整理过程中，我们注意到其中几个模块具备典型的归纳价值：榜单区、分类索引、以及近期动态集合。每一块都对应着特定的查阅习惯。</p>
+        </div>
+
+        <div class="card-item">
+            <h3><span></span> ② 常见使用场景</h3>
+            <p>根据公开资料与用户反馈片段，这类索引页面主要服务于三类场景：快速了解当前热点、按兴趣领域浏览分类、以及查找特定条目或术语。使用者通常带着“想看看最近有什么”或者“想找某个方向的内容”这类意图。</p>
+            <p>场景的差异决定了页面需要兼顾概览与深度。例如，在移动端浏览时，卡片式聚合与清晰的分组就显得尤为重要。这也是我们在整理资料时特别留意的一点。</p>
+            <div class="inset-note">
+                📋 参考维度：信息密度、导航深度、响应适应。
+            </div>
+        </div>
+
+        <div class="card-item">
+            <h3><span></span> ③ 结构特点与延伸</h3>
+            <p>从索引的角度看，任何门户类页面本质上都在做两件事：分类与连接。好的索引不仅告诉用户“这里有什么”，还暗示“可能还关联着什么”。在梳理 <a href="https://index-portal-mksport.com" class="link-embed">mk体育</a> 的过程中，我们发现其分组方式倾向于以主题域为粒度，同时保留交叉引用的可能性。</p>
+            <p>这份笔记本身也是一次轻度索引实践：把零散的特征归纳为可读的条目，为后续的深入或比较提供基础。如果你恰好也在做类似的信息整理，希望这些结构能带来一点参考。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要式小段 -->
+    <div class="faq-mini">
+        <h4>❓ 常见问题摘要</h4>
+        <details>
+            <summary>这个专题适合哪些人参考？</summary>
+            <div class="faq-answer">对信息分类、界面结构或索引方式有兴趣的读者，以及想要快速了解某一门户布局逻辑的人。不做具体推荐。</div>
+        </details>
+        <details>
+            <summary>内容来源与更新频率？</summary>
+            <div class="faq-answer">基于公开可查的材料整理，不包含实时数据。页面内容为静态快照，不承诺定期更新。</div>
+        </details>
+        <details>
+            <summary>如何理解“索引”在这里的含义？</summary>
+            <div class="faq-answer">指将分散的特征、模块或信息点按主题归类，形成可翻阅、可对照的纲要，而非搜索引擎式的检索。</div>
+        </details>
+    </div>
+
+    <!-- 页尾访问提示 (自然嵌入) -->
+    <div class="closing-remark">
+        <span class="soft-highlight">📎 资料锚点</span>
+        本篇专题以信息整理为出发点，所有特征描述均基于公开结构梳理。若希望进一步浏览原页面布局，可参考 
+        <a href="https://index-portal-mksport.com" class="link-embed">mk体育</a> 
+        的当前版本。索引笔记力求中立，仅作为查阅辅助。
+    </div>
+
+    <!-- 极简 footer (无链接) -->
+    <div class="footer-soft">
+        ✦ 杂志式专题 · 资料索引页 ✦ 内容基于公开信息整理
+    </div>
+
+</div>
+</body>
+</html>
